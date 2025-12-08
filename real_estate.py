@@ -20,6 +20,7 @@ __all__ = [
 ]
 
 
+
 def add_listing(real_estate_list: Dict[str, Dict[str, Any]], name: str, details: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
     """Aggiunge o aggiorna un annuncio immobiliare nella lista.
 
@@ -46,6 +47,7 @@ def add_listing(real_estate_list: Dict[str, Dict[str, Any]], name: str, details:
     """
     # Placeholder di starter: restituisce la lista invariata.
     # Implementazione attesa: aggiungere/aggiornare la voce e restituire il dizionario aggiornato.
+    real_estate_list[name] = details
     return real_estate_list
 
 
@@ -71,6 +73,7 @@ def remove_listing(real_estate_list: Dict[str, Dict[str, Any]], name: str) -> Di
     """
     # Placeholder di starter: restituisce la lista invariata.
     # Implementazione attesa: rimuovere la voce se presente e restituire il dizionario aggiornato.
+    real_estate_list.pop (name, None)
     return real_estate_list
 
 
@@ -97,4 +100,20 @@ def format_list(real_estate_list: Dict[str, Dict[str, Any]]) -> str:
     """
     # Placeholder di starter: restituisce stringa vuota.
     # Implementazione attesa: generare una riga per immobile con i dettagli separati da virgole e newline finale.
-    return ""
+    
+    stringa_vuota = ""
+        
+    for name, details in real_estate_list.items():
+        riga = " "
+        riga = name + ": "
+        valori_stringa = []
+        
+        
+        for valore in details.values():
+            valori_stringa.append(str(valore))
+        valori = ",".join(valori_stringa)
+        riga += valori
+        riga += "\n"
+        stringa_vuota += riga
+
+    return stringa_vuota
